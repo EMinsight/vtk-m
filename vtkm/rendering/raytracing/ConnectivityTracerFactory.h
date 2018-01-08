@@ -57,6 +57,7 @@ public:
   //----------------------------------------------------------------------------
   static ConnectivityBase* CreateTracer(const vtkm::cont::DynamicCellSet& cellset,
                                         const vtkm::cont::CoordinateSystem& coords);
+
 };
 }
 }
