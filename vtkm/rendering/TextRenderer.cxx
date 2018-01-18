@@ -81,7 +81,7 @@ struct RenderBitmapFont : public vtkm::worklet::WorkletMapField
   }
 
   template <typename ColorBufferPortal>
-  void Plot(vtkm::Float32 x,
+  VTKM_EXEC void Plot(vtkm::Float32 x,
             vtkm::Float32 y,
             vtkm::Float32 intensity,
             ColorBufferPortal& colorBuffer) const

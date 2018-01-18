@@ -45,6 +45,7 @@ namespace rendering
 #endif
 
 template <typename ArrayHandleType>
+VTKM_EXEC
 inline void BoundsCheck(const ArrayHandleType& handle,
                         const vtkm::Id& index,
                         const char* file,
