@@ -62,12 +62,12 @@ struct ThrustIteratorTag
   using Type = ThrustIteratorFromArrayPortalTag;
 };
 template <typename T>
-struct ThrustIteratorTag<thrust::system::cuda::pointer<T>>
+struct ThrustIteratorTag<T*>
 {
   using Type = ThrustIteratorDevicePtrTag;
 };
 template <typename T>
-struct ThrustIteratorTag<thrust::system::cuda::pointer<const T>>
+struct ThrustIteratorTag<const T*>
 {
   using Type = ThrustIteratorDevicePtrTag;
 };
