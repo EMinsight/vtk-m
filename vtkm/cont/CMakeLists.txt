@@ -40,6 +40,7 @@ set(headers
   ArrayHandleSwizzle.h
   ArrayHandleTransform.h
   ArrayHandleUniformPointCoordinates.h
+  ArrayHandleVariant.h
   ArrayHandleView.h
   ArrayHandleVirtual.h
   ArrayHandleVirtualCoordinates.h
@@ -126,6 +127,7 @@ set(template_sources
 
 set(sources
   ArrayHandle.cxx
+  ArrayHandleVariant.cxx
   AssignerMultiBlock.cxx
   BoundsCompute.cxx
   BoundsGlobalCompute.cxx
