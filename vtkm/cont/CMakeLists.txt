@@ -40,6 +40,7 @@ set(headers
   ArrayHandleTransform.h
   ArrayHandleUniformPointCoordinates.h
   ArrayHandleView.h
+  ArrayHandleVirtual.h
   ArrayHandleVirtualCoordinates.h
   ArrayHandleZip.h
   ArrayPortal.h
@@ -99,6 +100,7 @@ set(headers
   Storage.h
   StorageBasic.h
   StorageImplicit.h
+  StorageVirtual.h
   StorageListTag.h
   Timer.h
   TryExecute.h
@@ -108,6 +110,7 @@ set(headers
 
 set(template_sources
   ArrayHandle.hxx
+  ArrayHandleVirtual.hxx
   ArrayRangeCompute.hxx
   BoundingIntervalHierarchy.hxx
   CellSetExplicit.hxx
@@ -134,6 +137,7 @@ set(sources
   DynamicArrayHandle.cxx
   EnvironmentTracker.cxx
   ErrorBadDevice.cxx
+  ErrorBadType.cxx
   Field.cxx
   FieldRangeCompute.cxx
   FieldRangeGlobalCompute.cxx
@@ -141,7 +145,7 @@ set(sources
   internal/ArrayManagerExecutionShareWithControl.cxx
   internal/DeviceAdapterTag.cxx
   internal/SimplePolymorphicContainer.cxx
-  internal/SimplePolymorphicContainer.cxx
+  internal/TransferInfo.cxx
   internal/VirtualObjectTransfer.cxx
   Logging.cxx
   MultiBlock.cxx
@@ -149,6 +153,7 @@ set(sources
   RuntimeDeviceInformation.cxx
   RuntimeDeviceTracker.cxx
   StorageBasic.cxx
+  StorageVirtual.cxx
   TryExecute.cxx
   )
 
