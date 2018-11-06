@@ -22,6 +22,7 @@ set(headers
   Algorithm.h
   ArrayCopy.h
   ArrayHandle.h
+  ArrayHandleAny.h
   ArrayHandleCast.h
   ArrayHandleCartesianProduct.h
   ArrayHandleCompositeVector.h
@@ -110,6 +111,7 @@ set(headers
 
 set(template_sources
   ArrayHandle.hxx
+  ArrayHandleAny.hxx
   ArrayHandleVirtual.hxx
   ArrayRangeCompute.hxx
   BoundingIntervalHierarchy.hxx
@@ -160,6 +162,7 @@ set(sources
 # This list of sources has code that uses devices and so might need to be
 # compiled with a device-specific compiler (like CUDA).
 set(device_sources
+  ArrayHandleAny.cxx
   ArrayRangeCompute.cxx
   CellSetExplicit.cxx
   CoordinateSystem.cxx
