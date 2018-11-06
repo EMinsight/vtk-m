@@ -38,12 +38,13 @@ public:
   VTKM_CONT
   CoordinateSystem();
 
-  VTKM_CONT CoordinateSystem(std::string name,
-                             const vtkm::cont::ArrayHandleVirtualCoordinates::Superclass& data);
+  VTKM_CONT CoordinateSystem(
+    std::string name,
+    const vtkm::cont::ArrayHandleVirtual<vtkm::Vec<vtkm::FloatDefault, 3>>& data);
 
-  template <typename TypeList, typename StorageList>
+  template <typename TypeList>
   VTKM_CONT CoordinateSystem(std::string name,
-                             const vtkm::cont::DynamicArrayHandleBase<TypeList, StorageList>& data);
+                             const vtkm::cont::ArrayHandleVariantBase<TypeList>& data);
 
   template <typename T, typename Storage>
   VTKM_CONT CoordinateSystem(std::string name, const ArrayHandle<T, Storage>& data);
@@ -63,14 +64,15 @@ public:
   VTKM_CONT
   vtkm::cont::ArrayHandleVirtualCoordinates GetData() const;
 
-  VTKM_CONT void SetData(const vtkm::cont::ArrayHandleVirtualCoordinates::Superclass& newdata);
+  VTKM_CONT void SetData(
+    const vtkm::cont::ArrayHandleVirtual<vtkm::Vec<vtkm::FloatDefault, 3>>& newdata);
 
-  template <typename T, typename StorageTag>
-  VTKM_CONT void SetData(const vtkm::cont::ArrayHandle<T, StorageTag>& newdata);
+  template <typename T, typename Storage>
+  VTKM_CONT void SetData(const vtkm::cont::ArrayHandle<T, Storage>& newdata);
 
   VTKM_CONT
-  template <typename TypeList, typename StorageList>
-  void SetData(const vtkm::cont::DynamicArrayHandleBase<TypeList, StorageList>& newdata);
+  template <typename TypeList>
+  void SetData(const vtkm::cont::ArrayHandleVariantBase<TypeList>& newdata);
 
   VTKM_CONT
   void GetRange(vtkm::Range* range) const;

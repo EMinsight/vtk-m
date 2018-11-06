@@ -47,21 +47,7 @@ vtkm::cont::ArrayHandle<vtkm::Range> FieldRangeCompute(
   const std::string& name,
   vtkm::cont::Field::Association assoc = vtkm::cont::Field::Association::ANY);
 
-template <typename TypeList, typename StorageList>
-VTKM_CONT vtkm::cont::ArrayHandle<vtkm::Range> FieldRangeCompute(
-  const vtkm::cont::DataSet& dataset,
-  const std::string& name,
-  vtkm::cont::Field::Association assoc,
-  TypeList,
-  StorageList)
-{
-  VTKM_IS_LIST_TAG(TypeList);
-  VTKM_IS_LIST_TAG(StorageList);
-
-  return vtkm::cont::detail::FieldRangeComputeImpl(dataset, name, assoc, TypeList(), StorageList());
-}
-
-template <typename TypeList>
+template<typename TypeList>
 VTKM_CONT vtkm::cont::ArrayHandle<vtkm::Range> FieldRangeCompute(
   const vtkm::cont::DataSet& dataset,
   const std::string& name,
@@ -69,9 +55,9 @@ VTKM_CONT vtkm::cont::ArrayHandle<vtkm::Range> FieldRangeCompute(
   TypeList)
 {
   VTKM_IS_LIST_TAG(TypeList);
-  return vtkm::cont::detail::FieldRangeComputeImpl(
-    dataset, name, assoc, TypeList(), VTKM_DEFAULT_STORAGE_LIST_TAG());
+  return vtkm::cont::detail::FieldRangeComputeImpl(dataset, name, assoc, TypeList());
 }
+
 //@}
 
 //{@
@@ -88,22 +74,7 @@ vtkm::cont::ArrayHandle<vtkm::Range> FieldRangeCompute(
   const std::string& name,
   vtkm::cont::Field::Association assoc = vtkm::cont::Field::Association::ANY);
 
-template <typename TypeList, typename StorageList>
-VTKM_CONT vtkm::cont::ArrayHandle<vtkm::Range> FieldRangeCompute(
-  const vtkm::cont::MultiBlock& multiblock,
-  const std::string& name,
-  vtkm::cont::Field::Association assoc,
-  TypeList,
-  StorageList)
-{
-  VTKM_IS_LIST_TAG(TypeList);
-  VTKM_IS_LIST_TAG(StorageList);
-
-  return vtkm::cont::detail::FieldRangeComputeImpl(
-    multiblock, name, assoc, TypeList(), StorageList());
-}
-
-template <typename TypeList>
+template<typename TypeList>
 VTKM_CONT vtkm::cont::ArrayHandle<vtkm::Range> FieldRangeCompute(
   const vtkm::cont::MultiBlock& multiblock,
   const std::string& name,
@@ -111,9 +82,9 @@ VTKM_CONT vtkm::cont::ArrayHandle<vtkm::Range> FieldRangeCompute(
   TypeList)
 {
   VTKM_IS_LIST_TAG(TypeList);
-  return vtkm::cont::detail::FieldRangeComputeImpl(
-    multiblock, name, assoc, TypeList(), VTKM_DEFAULT_STORAGE_LIST_TAG());
+  return vtkm::cont::detail::FieldRangeComputeImpl(multiblock, name, assoc, TypeList());
 }
+
 //@}
 }
 } // namespace vtkm::cont

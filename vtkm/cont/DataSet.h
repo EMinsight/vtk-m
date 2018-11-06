@@ -195,7 +195,6 @@ namespace cont
 {
 
 template <typename FieldTypeList = VTKM_DEFAULT_TYPE_LIST_TAG,
-          typename FieldStorageList = VTKM_DEFAULT_STORAGE_LIST_TAG,
           typename CellSetTypesList = VTKM_DEFAULT_CELL_SET_LIST_TAG>
 struct SerializableDataSet
 {
@@ -214,12 +213,12 @@ struct SerializableDataSet
 namespace diy
 {
 
-template <typename FieldTypeList, typename FieldStorageList, typename CellSetTypesList>
+template <typename FieldTypeList, typename CellSetTypesList>
 struct Serialization<
-  vtkm::cont::SerializableDataSet<FieldTypeList, FieldStorageList, CellSetTypesList>>
+  vtkm::cont::SerializableDataSet<FieldTypeList, CellSetTypesList>>
 {
 private:
-  using Type = vtkm::cont::SerializableDataSet<FieldTypeList, FieldStorageList, CellSetTypesList>;
+  using Type = vtkm::cont::SerializableDataSet<FieldTypeList, CellSetTypesList>;
 
 public:
   static VTKM_CONT void save(BinaryBuffer& bb, const Type& serializable)
@@ -245,7 +244,7 @@ public:
     for (vtkm::IdComponent i = 0; i < numberOfFields; ++i)
     {
       diy::save(
-        bb, vtkm::cont::SerializableField<FieldTypeList, FieldStorageList>(dataset.GetField(i)));
+        bb, vtkm::cont::SerializableField<FieldTypeList>(dataset.GetField(i)));
     }
   }
 
@@ -276,7 +275,7 @@ public:
     diy::load(bb, numberOfFields);
     for (vtkm::IdComponent i = 0; i < numberOfFields; ++i)
     {
-      vtkm::cont::SerializableField<FieldTypeList, FieldStorageList> field;
+      vtkm::cont::SerializableField<FieldTypeList> field;
       diy::load(bb, field);
       dataset.AddField(field.Field);
     }

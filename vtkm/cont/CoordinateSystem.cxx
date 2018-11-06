@@ -38,7 +38,7 @@ VTKM_CONT CoordinateSystem::CoordinateSystem()
 
 VTKM_CONT CoordinateSystem::CoordinateSystem(
   std::string name,
-  const vtkm::cont::ArrayHandleVirtualCoordinates::Superclass& data)
+  const vtkm::cont::ArrayHandleVirtual<vtkm::Vec<vtkm::FloatDefault, 3>>& data)
   : Superclass(name, Association::POINTS, data)
 {
 }
@@ -64,7 +64,7 @@ vtkm::cont::ArrayHandleVirtualCoordinates CoordinateSystem::GetData() const
 }
 
 VTKM_CONT
-void CoordinateSystem::SetData(const vtkm::cont::ArrayHandleVirtualCoordinates::Superclass& newdata)
+void CoordinateSystem::SetData(const vtkm::cont::ArrayHandleVirtual<vtkm::Vec<vtkm::FloatDefault, 3>>& newdata)
 {
   this->Superclass::SetData(newdata);
 }
@@ -79,13 +79,13 @@ void CoordinateSystem::PrintSummary(std::ostream& out) const
 VTKM_CONT
 void CoordinateSystem::GetRange(vtkm::Range* range) const
 {
-  this->Superclass::GetRange(range, CoordinatesTypeList(), CoordinatesStorageList());
+  this->Superclass::GetRange(range, CoordinatesTypeList());
 }
 
 VTKM_CONT
 const vtkm::cont::ArrayHandle<vtkm::Range>& CoordinateSystem::GetRange() const
 {
-  return this->Superclass::GetRange(CoordinatesTypeList(), CoordinatesStorageList());
+  return this->Superclass::GetRange(CoordinatesTypeList());
 }
 
 VTKM_CONT
@@ -141,12 +141,12 @@ template VTKM_CONT_EXPORT CoordinateSystem::CoordinateSystem(
       vtkm::cont::ArrayHandle<vtkm::Float64, vtkm::cont::StorageTagBasic>>::StorageTag>&);
 
 template VTKM_CONT_EXPORT CoordinateSystem::CoordinateSystem(std::string name,
-                                                             const vtkm::cont::DynamicArrayHandle&);
+                                                             const vtkm::cont::ArrayHandleVariant&);
 
 template VTKM_CONT_EXPORT void CoordinateSystem::SetData(
   const vtkm::cont::ArrayHandle<vtkm::Vec<float, 3>>&);
 template VTKM_CONT_EXPORT void CoordinateSystem::SetData(
   const vtkm::cont::ArrayHandle<vtkm::Vec<double, 3>>&);
-template VTKM_CONT_EXPORT void CoordinateSystem::SetData(const vtkm::cont::DynamicArrayHandle&);
+template VTKM_CONT_EXPORT void CoordinateSystem::SetData(const vtkm::cont::ArrayHandleVariant&);
 }
 } // namespace vtkm::cont
